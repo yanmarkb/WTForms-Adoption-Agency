@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}{% endblock %} - Adopt a Pet</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <h1>Adopt a Pet</h1>
+    <button onclick="window.location.href='{{ url_for('add_pet') }}'" class="btn btn-primary">Add a Pet</button>
+    {% block content %}{% endblock %}
+</body>
+</html>

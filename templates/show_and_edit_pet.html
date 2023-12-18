@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}
+Add Pet
+{% endblock %}
+
+{% block content %}
+<h2>{{ pet.name }}</h2>
+<p>Species: {{ pet.species }}</p>
+{% if pet.photo_url %}
+<img src="{{ pet.photo_url }}" alt="{{ pet.name }}">
+{% endif %}
+{% if pet.age is not none %}
+<p>Age: {{ pet.age }}</p>
+{% endif %}
+
+<form method="POST">
+    {{ form.hidden_tag() }}
+    {{ form.photo_url.label }} {{ form.photo_url() }}
+    {{ form.notes.label }} {{ form.notes() }}
+    {{ form.available.label }} {{ form.available() }}
+    <input type="submit" value="Edit Pet">
+</form>
+<form method="POST" action="{{ url_for('delete_pet', pet_id=pet.id) }}">
+    <button type="submit" class="delete-btn">Delete Pet</button>
+</form>
+{% endblock %}
